@@ -1,0 +1,39 @@
+doctype html
+html
+    head
+         
+    body
+        h2 User Manager Mongo
+        a(href='/create')
+            button Add User
+        span
+            a(href='/')
+                button List
+        span
+            a(href='/sort')
+                button Sort
+        p
+        span
+            form(action='/search', method='post')
+                input(type='text', id='search', name='search')
+                button(type='submit') Search
+        p
+        table(style='', border='1')
+            tr
+                th UserID
+                th First name
+                th Last name
+                th Email
+                th Age
+            each user in users
+                tr
+                    td #{user.userID}
+                    td #{user.first} 
+                    td #{user.last}
+                    td #{user.email}
+                    td #{user.age}
+                    td
+                        a(href='/edit/' + user.userID)
+                            button Edit
+                        form(action='/delete/' + user.userID, method='post')
+                            button(type='submit') Delete
